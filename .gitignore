@@ -21,3 +21,9 @@
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+
+# Ignore local SQLite/JSON databases and uploaded assets from being overwritten on git push
+public/admin/data/*.json
+public/admin/uploads/*
+build/admin/data/*.json
+build/admin/uploads/*

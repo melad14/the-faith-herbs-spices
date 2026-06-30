@@ -56,25 +56,29 @@ const Footer = () => {
           <div className="col-md-6 col-lg-6 col-xl-3">
             <div className="footer-item d-flex flex-column">
               <h4 className=" mb-4">Contact Info</h4>
-              <a ><i className="fa fa-map-marker-alt me-2"></i> bani swayf-egypt
+              <a href="https://maps.google.com/?q=Beni+Suef,+Egypt" target="_blank" rel="noopener noreferrer" className="mb-2 text-decoration-none">
+                <i className="fa fa-map-marker-alt me-2"></i> Bani Suef, Egypt
               </a>
-              <a ><i className="fas fa-envelope me-2"></i>
-                ElEman@gmail.com</a>
-              <a ><i className="fas fa-phone me-2"></i>+01115027599
+              <a href="mailto:ElEman@gmail.com" className="mb-2 text-decoration-none">
+                <i className="fas fa-envelope me-2"></i> ElEman@gmail.com
               </a>
-              <a  className="mb-3"><i className="fas fa-print me-2"></i>
-               ElEman-herbs.com</a>
+              <a href="tel:+201115027599" className="mb-2 text-decoration-none">
+                <i className="fas fa-phone me-2"></i> +201115027599
+              </a>
+              <a href="https://www.ElEman.com" target="_blank" rel="noopener noreferrer" className="mb-3 text-decoration-none">
+                <i className="fas fa-print me-2"></i> ElEman-herbs.com
+              </a>
               <div className="d-flex">
-                <a className="btn btn-secondary btn-md-square rounded-circle me-3" >
+                <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" className="btn btn-secondary btn-md-square rounded-circle me-3" aria-label="Facebook">
                   <i className="fab fa-facebook-f "></i>
                 </a>
-                <a className="btn btn-secondary btn-md-square rounded-circle me-3" >
+                <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" className="btn btn-secondary btn-md-square rounded-circle me-3" aria-label="Twitter">
                   <i className="fab fa-twitter "></i>
                 </a>
-                <a className="btn btn-secondary btn-md-square rounded-circle me-3" >
+                <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" className="btn btn-secondary btn-md-square rounded-circle me-3" aria-label="Instagram">
                   <i className="fab fa-instagram "></i>
                 </a>
-                <a className="btn btn-secondary btn-md-square rounded-circle me-0" >
+                <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" className="btn btn-secondary btn-md-square rounded-circle me-0" aria-label="LinkedIn">
                   <i className="fab fa-linkedin-in "></i>
                 </a>
               </div>
