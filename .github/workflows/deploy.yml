@@ -1,0 +1,38 @@
+name: Deploy Website to Hostinger
+
+on:
+  push:
+    branches:
+      - master  # triggers deployment when pushing to master branch
+
+jobs:
+  web-deploy:
+    name: 🎉 Deploying React and Admin Panel
+    runs-on: ubuntu-latest
+    steps:
+    - name: 🚚 Get latest code
+      uses: actions/checkout@v4
+
+    - name: Node.js Setup
+      uses: actions/setup-node@v4
+      with:
+        node-version: 18
+
+    - name: 🔨 Install Dependencies & Build
+      run: |
+        npm install
+        npm run build
+
+    - name: 📂 Sync Files via FTP
+      uses: SamKirkland/FTP-Deploy-Action@v4.3.5
+      with:
+        server: ${{ secrets.FTP_SERVER }}
+        username: ${{ secrets.FTP_USERNAME }}
+        password: ${{ secrets.FTP_PASSWORD }}
+        local-dir: ./build/
+        server-dir: ./
+        exclude: |
+          **/.git*
+          **/node_modules/**
+          admin/data/**
+          admin/uploads/**
