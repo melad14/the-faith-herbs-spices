@@ -99,6 +99,49 @@ export default function Home() {
         {/* Features Section */}
         <FeaturesSection />
 
+        {/* Media Gallery Start */}
+        <div className="container-fluid py-5 bg-light">
+          <div className="container py-5">
+            <div className="section-title text-center mb-5" data-aos="fade-up">
+              <div className="sub-style">
+                <h5 className="sub-title text-primary px-3 mb-3">Media Gallery</h5>
+                <h2 className="display-6 mb-4">Our Facilities & Certificates</h2>
+                <p className="lead text-muted">A glimpse of our premium quality standards, processing factory, and international certifications</p>
+              </div>
+            </div>
+
+            <div className="row g-4">
+              {mediaList.map((item, idx) => {
+                const fileKey = item.file || item.url;
+                const imageSrc = fileKey && (fileKey.startsWith('http') || fileKey.startsWith('/') || fileKey.startsWith('data:'))
+                  ? fileKey
+                  : fileKey && !fileKey.includes('/')
+                  ? `${UPLOADS_URL}uploads/${fileKey}`
+                  : fileKey;
+
+                return (
+                  <div key={item.id || idx} className="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay={(idx % 3) * 100}>
+                    <div className="card border-0 shadow-sm rounded-4 overflow-hidden position-relative group h-100" style={{ minHeight: '320px' }}>
+                      <img src={imageSrc} className="card-img w-100 h-100 object-fit-cover transition-all" alt={item.title} style={{ objectFit: 'cover', minHeight: '320px' }} />
+                      <div className="position-absolute top-0 start-0 w-100 h-100 d-flex flex-column justify-content-end p-4" style={{ background: 'linear-gradient(to top, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0.25) 60%, rgba(0,0,0,0) 100%)' }}>
+                        <div className="mb-2">
+                          <span className="badge bg-success text-uppercase py-1 px-2">{item.type}</span>
+                        </div>
+                        <h5 className="text-white fw-bold mb-2">{item.title}</h5>
+                        <p className="text-white-50 small mb-3 text-truncate">{item.description}</p>
+                        <Link to={`/media/${item.id}`} className="btn btn-sm btn-outline-light rounded-pill w-100 fw-bold py-2">
+                          View Full Details
+                        </Link>
+                      </div>
+                    </div>
+                  </div>
+                );
+              })}
+            </div>
+          </div>
+        </div>
+        {/* Media Gallery End */}
+
         {/* About Section */}
         <AboutSection />
 
@@ -250,47 +293,7 @@ export default function Home() {
       </div>
       {/* Featured Products End */}
 
-      {/* Media Gallery Start */}
-      <div className="container-fluid py-5 bg-light">
-        <div className="container py-5">
-          <div className="section-title text-center mb-5" data-aos="fade-up">
-            <div className="sub-style">
-              <h5 className="sub-title text-primary px-3 mb-3">Media Gallery</h5>
-              <h2 className="display-6 mb-4">Our Facilities & Certificates</h2>
-              <p className="lead text-muted">A glimpse of our premium quality standards, processing factory, and international certifications</p>
-            </div>
-          </div>
-
-          <div className="row g-4">
-            {mediaList.map((item, idx) => {
-              const imageSrc = item.url && (item.url.startsWith('http') || item.url.startsWith('/') || item.url.startsWith('data:'))
-                ? item.url
-                : item.url && !item.url.includes('/')
-                ? `${UPLOADS_URL}uploads/${item.url}`
-                : item.url;
-
-              return (
-                <div key={item.id || idx} className="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay={(idx % 3) * 100}>
-                  <div className="card border-0 shadow-sm rounded-4 overflow-hidden position-relative group h-100" style={{ minHeight: '320px' }}>
-                    <img src={imageSrc} className="card-img w-100 h-100 object-fit-cover transition-all" alt={item.title} style={{ objectFit: 'cover', minHeight: '320px' }} />
-                    <div className="position-absolute top-0 start-0 w-100 h-100 d-flex flex-column justify-content-end p-4" style={{ background: 'linear-gradient(to top, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0.25) 60%, rgba(0,0,0,0) 100%)' }}>
-                      <div className="mb-2">
-                        <span className="badge bg-success text-uppercase py-1 px-2">{item.type}</span>
-                      </div>
-                      <h5 className="text-white fw-bold mb-2">{item.title}</h5>
-                      <p className="text-white-50 small mb-3 text-truncate">{item.description}</p>
-                      <Link to={`/media/${item.id}`} className="btn btn-sm btn-outline-light rounded-pill w-100 fw-bold py-2">
-                        View Full Details
-                      </Link>
-                    </div>
-                  </div>
-                </div>
-              );
-            })}
-          </div>
-        </div>
-      </div>
-      {/* Media Gallery End */}
+      {/* Media Gallery moved to follow Why Choose Us section */}
 
       {/* Banner Start */}
       <div className="cta-banner py-5">

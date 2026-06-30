@@ -45,7 +45,7 @@ export default function MediaDetails() {
     );
   }
 
-  const fileUrl = `${UPLOADS_URL}uploads/${mediaItem.file}`;
+  const fileUrl = `${UPLOADS_URL}uploads/${mediaItem.file || mediaItem.url}`;
 
   return (
     <div className="container-fluid bg-light py-5" style={{ minHeight: '85vh' }}>
