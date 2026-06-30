@@ -20,6 +20,7 @@ import { products as localProducts } from '../../data/products';
 
 export default function Home() {
   const [productsList, setProductsList] = useState(localProducts);
+  const [playingVideoId, setPlayingVideoId] = useState(null);
   const [mediaList, setMediaList] = useState([
     { id: "media_1", type: "image", title: "ISO 9001 Certificate", url: "Certificates-9001.png", description: "ElEman Herbs & Spices is ISO 9001 certified for quality management systems." },
     { id: "media_2", type: "image", title: "FDA Registration", url: "Certificates-FDA.png", description: "Our facilities and products are fully registered and compliant with the US FDA standards." },
@@ -120,23 +121,54 @@ export default function Home() {
                   : fileKey;
 
                 const isVideo = item.type === 'video';
+                const isPlaying = playingVideoId === item.id;
 
                 return (
                   <div key={item.id || idx} className="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay={(idx % 3) * 100}>
                     <div className="card border-0 shadow-sm rounded-4 overflow-hidden position-relative group h-100" style={{ minHeight: '320px', backgroundColor: isVideo ? '#000' : '#eaeaea' }}>
                       {isVideo ? (
-                        <video src={mediaSrc} className="card-img w-100 h-100" style={{ objectFit: 'contain', minHeight: '320px' }} muted playsInline preload="metadata" />
+                        <video 
+                          src={mediaSrc} 
+                          className="card-img w-100 h-100" 
+                          style={{ objectFit: 'contain', minHeight: '320px', cursor: isPlaying ? 'auto' : 'pointer' }} 
+                          controls={isPlaying}
+                          autoPlay={isPlaying}
+                          muted={!isPlaying}
+                          playsInline 
+                          preload="metadata"
+                          onPlay={() => setPlayingVideoId(item.id)}
+                          onPause={() => setPlayingVideoId(null)}
+                          onEnded={() => setPlayingVideoId(null)}
+                        />
                       ) : (
                         <img src={mediaSrc} className="card-img w-100 h-100" alt={item.title} style={{ objectFit: 'contain', minHeight: '320px' }} />
                       )}
 
-                      {isVideo && (
-                        <div className="position-absolute top-50 start-50 translate-middle bg-dark bg-opacity-75 rounded-circle d-flex align-items-center justify-content-center" style={{ width: '60px', height: '60px', pointerEvents: 'none', zIndex: 2 }}>
+                      {/* Video Play Overlay Button */}
+                      {isVideo && !isPlaying && (
+                        <button 
+                          type="button"
+                          onClick={() => setPlayingVideoId(item.id)}
+                          className="position-absolute top-50 start-50 translate-middle bg-success border-0 rounded-circle d-flex align-items-center justify-content-center shadow-lg" 
+                          style={{ width: '65px', height: '65px', cursor: 'pointer', zIndex: 3, transition: 'transform 0.2s' }}
+                          onMouseOver={(e) => e.currentTarget.style.transform = 'translate(-50%, -50%) scale(1.1)'}
+                          onMouseOut={(e) => e.currentTarget.style.transform = 'translate(-50%, -50%) scale(1.0)'}
+                        >
                           <i className="fas fa-play text-white fa-lg"></i>
-                        </div>
+                        </button>
                       )}
 
-                      <div className="position-absolute top-0 start-0 w-100 h-100 d-flex flex-column justify-content-end p-4" style={{ background: 'linear-gradient(to top, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0.25) 60%, rgba(0,0,0,0) 100%)', zIndex: 1 }}>
+                      {/* Text details overlay - fades out when playing */}
+                      <div 
+                        className={`position-absolute top-0 start-0 w-100 h-100 d-flex flex-column justify-content-end p-4 transition-all`} 
+                        style={{ 
+                          background: 'linear-gradient(to top, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0.25) 60%, rgba(0,0,0,0) 100%)', 
+                          zIndex: isPlaying ? 0 : 2,
+                          opacity: isPlaying ? 0 : 1,
+                          pointerEvents: isPlaying ? 'none' : 'auto',
+                          transition: 'opacity 0.3s ease, z-index 0.3s ease'
+                        }}
+                      >
                         <div className="mb-2">
                           <span className="badge bg-success text-uppercase py-1 px-2">{item.type}</span>
                         </div>
