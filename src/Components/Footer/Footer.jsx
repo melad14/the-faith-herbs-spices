@@ -13,7 +13,7 @@ const Footer = () => {
               <div className="footer-item">
                 <h4 className=" mb-4">About Us</h4>
                 <p className="mb-3">
-                                    faith herbs & spices is a leading exporter of premium quality herbs and spices, based in Egypt and serving customers worldwide. Our herbs and spices are grown and harvested using sustainable practices and are carefully processed to preserve their natural flavor and health benefits.
+                                    ElEman herbs & spices is a leading exporter of premium quality herbs and spices, based in Egypt and serving customers worldwide. Our herbs and spices are grown and harvested using sustainable practices and are carefully processed to preserve their natural flavor and health benefits.
 
                 </p>
               </div>
@@ -59,11 +59,11 @@ const Footer = () => {
               <a ><i className="fa fa-map-marker-alt me-2"></i> bani swayf-egypt
               </a>
               <a ><i className="fas fa-envelope me-2"></i>
-                Faith@gmail.com</a>
+                ElEman@gmail.com</a>
               <a ><i className="fas fa-phone me-2"></i>+01115027599
               </a>
               <a  className="mb-3"><i className="fas fa-print me-2"></i>
-               faith-herbs.com</a>
+               ElEman-herbs.com</a>
               <div className="d-flex">
                 <a className="btn btn-secondary btn-md-square rounded-circle me-3" >
                   <i className="fab fa-facebook-f "></i>

@@ -35,7 +35,7 @@ export default function Home() {
                   <div className="container">
                     <div className="row align-items-center min-vh-75">
                       <div className="col-lg-6 text-center text-lg-start">
-                        <h1 className="display-4 fw-bold text-white mb-3">Faith Herbs & Spices</h1>
+                        <h1 className="display-4 fw-bold text-white mb-3">ElEman Herbs & Spices</h1>
                         <p className="lead text-white mb-4">Premium quality herbs and spices from Egypt to the world. Sustainably grown, carefully processed, naturally flavorful.</p>
                         <div className="d-flex flex-wrap gap-3 justify-content-center justify-content-lg-start">
                           <Link to="/products" className="btn btn-success btn-lg px-4 py-3">Explore Products</Link>
@@ -141,7 +141,7 @@ export default function Home() {
                   <h6 className="text-primary mb-2">ABOUT US</h6>
                   <h2 className="display-5 fw-bold mb-4">Two Decades of Excellence in Herbs & Spices</h2>
                   <p className="lead text-muted mb-4">
-                    Faith Herbs & Spices is a leading exporter of premium quality herbs and spices, based in Egypt and serving customers worldwide with sustainable practices and carefully processed products.
+                    ElEman Herbs & Spices is a leading exporter of premium quality herbs and spices, based in Egypt and serving customers worldwide with sustainable practices and carefully processed products.
                   </p>
 
                   <div className="row g-4 mb-4">
@@ -207,14 +207,14 @@ export default function Home() {
 
               <div className="col-lg-6">
                 <div className="about-image position-relative">
-                  <img src={about2} className="img-fluid rounded-4 shadow-lg" alt="Faith Herbs Facility" />
+                  <img src={about2} className="img-fluid rounded-4 shadow-lg" alt="ElEman Herbs Facility" />
                   <div className="team-badge bg-white rounded-4 p-4 shadow position-absolute bottom-0 end-0 m-4">
                     <div className="d-flex align-items-center">
                       <div className="bg-primary rounded-circle d-flex align-items-center justify-content-center me-3" style={{ width: '60px', height: '60px' }}>
                         <i className="fas fa-users fa-lg text-white"></i>
                       </div>
                       <div>
-                        <h5 className="fw-bold mb-1">Faith Team</h5>
+                        <h5 className="fw-bold mb-1">ElEman Team</h5>
                         <p className="mb-0 text-muted">50+ Dedicated Professionals</p>
                       </div>
                     </div>
@@ -288,7 +288,7 @@ export default function Home() {
             <h6 className="text-primary mb-2">OUR WORKFLOW</h6>
             <h2 className="display-5 fw-bold text-white mb-4">Our Quality Process</h2>
             <p className="lead text-light mb-0">
-              At Faith Herbs, we follow a streamlined process to ensure premium quality herbs and spices
+              At ElEman Herbs, we follow a streamlined process to ensure premium quality herbs and spices
               reach our global customers with efficiency and reliability. Our commitment to excellence
               guides every step of our export journey.
             </p>
@@ -633,7 +633,7 @@ export default function Home() {
       <div className="cta-banner py-5">
         <div className=" py-5">
           <div className="banner-content rounded-4 position-relative overflow-hidden">
-            <img src={banner1} className="img-fluid w-100" alt="Faith Herbs Banner" style={{ height: '400px', objectFit: 'cover' }} />
+            <img src={banner1} className="img-fluid w-100" alt="ElEman Herbs Banner" style={{ height: '400px', objectFit: 'cover' }} />
             <div className="banner-overlay position-absolute top-0 start-0 w-100 h-100 d-flex align-items-center">
               <div className="container">
                 <div className="row justify-content-center text-center">
@@ -664,7 +664,7 @@ export default function Home() {
         <div className="container py-5">
           <div className="text-center mx-auto mb-5" style={{ maxWidth: '800px' }}>
             <h6 className="text-primary mb-2">GET IN TOUCH</h6>
-            <h2 className="display-5 fw-bold mb-3">Contact Faith Herbs</h2>
+            <h2 className="display-5 fw-bold mb-3">Contact ElEman Herbs</h2>
             <p className="lead text-muted">
               Ready to discuss your herb and spice requirements? Reach out to our team for premium quality products
               and exceptional service.
@@ -692,8 +692,8 @@ export default function Home() {
                         <i className="fas fa-envelope fa-2x text-primary"></i>
                       </div>
                       <h5 className="fw-bold mb-2">Email Us</h5>
-                      <a href="mailto:contact@Faith.com" className="text-muted text-decoration-none">
-                        contact@Faith.com
+                      <a href="mailto:contact@ElEman.com" className="text-muted text-decoration-none">
+                        contact@ElEman.com
                       </a>
                     </div>
                   </div>
@@ -716,8 +716,8 @@ export default function Home() {
                         <i className="fas fa-globe fa-2x text-primary"></i>
                       </div>
                       <h5 className="fw-bold mb-2">Visit Website</h5>
-                      <a href="https://www.Faith.com" className="text-muted text-decoration-none" target="_blank" rel="noopener noreferrer">
-                        www.Faith.com
+                      <a href="https://www.ElEman.com" className="text-muted text-decoration-none" target="_blank" rel="noopener noreferrer">
+                        www.ElEman.com
                       </a>
                     </div>
                   </div>

@@ -121,7 +121,7 @@ export default function About() {
                   <h6 className="text-primary mb-2">ABOUT US</h6>
                   <h2 className="display-5 fw-bold mb-4">Two Decades of Excellence in Herbs & Spices</h2>
                   <p className="lead text-muted mb-4">
-                    Faith Herbs & Spices is a leading exporter of premium quality herbs and spices, based in Egypt and serving customers worldwide with sustainable practices and carefully processed products.
+                    ElEman Herbs & Spices is a leading exporter of premium quality herbs and spices, based in Egypt and serving customers worldwide with sustainable practices and carefully processed products.
                   </p>
 
                   <div className="row g-4 mb-4">
@@ -187,14 +187,14 @@ export default function About() {
 
               <div className="col-lg-6">
                 <div className="about-image position-relative">
-                  <img src={about2} className="img-fluid rounded-4 shadow-lg" alt="Faith Herbs Facility" />
+                  <img src={about2} className="img-fluid rounded-4 shadow-lg" alt="ElEman Herbs Facility" />
                   <div className="team-badge bg-white rounded-4 p-4 shadow position-absolute bottom-0 end-0 m-4">
                     <div className="d-flex align-items-center">
                       <div className="bg-primary rounded-circle d-flex align-items-center justify-content-center me-3" style={{ width: '60px', height: '60px' }}>
                         <i className="fas fa-users fa-lg text-white"></i>
                       </div>
                       <div>
-                        <h5 className="fw-bold mb-1">Faith Team</h5>
+                        <h5 className="fw-bold mb-1">ElEman Team</h5>
                         <p className="mb-0 text-muted">50+ Dedicated Professionals</p>
                       </div>
                     </div>

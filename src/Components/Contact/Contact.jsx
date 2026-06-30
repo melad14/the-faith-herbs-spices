@@ -27,7 +27,7 @@ export default function Contact() {
         <div className="container py-5">
           <div className="text-center mx-auto mb-5" style={{ maxWidth: '800px' }}>
             <h6 className="text-primary mb-2">GET IN TOUCH</h6>
-            <h2 className="display-5 fw-bold mb-3">Contact Faith Herbs</h2>
+            <h2 className="display-5 fw-bold mb-3">Contact ElEman Herbs</h2>
             <p className="lead text-muted">
               Ready to discuss your herb and spice requirements? Reach out to our team for premium quality products
               and exceptional service.
@@ -55,8 +55,8 @@ export default function Contact() {
                         <i className="fas fa-envelope fa-2x text-primary"></i>
                       </div>
                       <h5 className="fw-bold mb-2">Email Us</h5>
-                      <a href="mailto:contact@Faith.com" className="text-muted text-decoration-none">
-                        contact@Faith.com
+                      <a href="mailto:contact@ElEman.com" className="text-muted text-decoration-none">
+                        contact@ElEman.com
                       </a>
                     </div>
                   </div>
@@ -79,8 +79,8 @@ export default function Contact() {
                         <i className="fas fa-globe fa-2x text-primary"></i>
                       </div>
                       <h5 className="fw-bold mb-2">Visit Website</h5>
-                      <a href="https://www.Faith.com" className="text-muted text-decoration-none" target="_blank" rel="noopener noreferrer">
-                        www.Faith.com
+                      <a href="https://www.ElEman.com" className="text-muted text-decoration-none" target="_blank" rel="noopener noreferrer">
+                        www.ElEman.com
                       </a>
                     </div>
                   </div>
