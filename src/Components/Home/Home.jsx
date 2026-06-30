@@ -113,17 +113,30 @@ export default function Home() {
             <div className="row g-4">
               {mediaList.map((item, idx) => {
                 const fileKey = item.file || item.url;
-                const imageSrc = fileKey && (fileKey.startsWith('http') || fileKey.startsWith('/') || fileKey.startsWith('data:'))
+                const mediaSrc = fileKey && (fileKey.startsWith('http') || fileKey.startsWith('/') || fileKey.startsWith('data:'))
                   ? fileKey
                   : fileKey && !fileKey.includes('/')
                   ? `${UPLOADS_URL}uploads/${fileKey}`
                   : fileKey;
 
+                const isVideo = item.type === 'video';
+
                 return (
                   <div key={item.id || idx} className="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay={(idx % 3) * 100}>
-                    <div className="card border-0 shadow-sm rounded-4 overflow-hidden position-relative group h-100" style={{ minHeight: '320px' }}>
-                      <img src={imageSrc} className="card-img w-100 h-100 object-fit-cover transition-all" alt={item.title} style={{ objectFit: 'cover', minHeight: '320px' }} />
-                      <div className="position-absolute top-0 start-0 w-100 h-100 d-flex flex-column justify-content-end p-4" style={{ background: 'linear-gradient(to top, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0.25) 60%, rgba(0,0,0,0) 100%)' }}>
+                    <div className="card border-0 shadow-sm rounded-4 overflow-hidden position-relative group h-100" style={{ minHeight: '320px', backgroundColor: isVideo ? '#000' : '#eaeaea' }}>
+                      {isVideo ? (
+                        <video src={mediaSrc} className="card-img w-100 h-100" style={{ objectFit: 'contain', minHeight: '320px' }} muted playsInline preload="metadata" />
+                      ) : (
+                        <img src={mediaSrc} className="card-img w-100 h-100" alt={item.title} style={{ objectFit: 'contain', minHeight: '320px' }} />
+                      )}
+
+                      {isVideo && (
+                        <div className="position-absolute top-50 start-50 translate-middle bg-dark bg-opacity-75 rounded-circle d-flex align-items-center justify-content-center" style={{ width: '60px', height: '60px', pointerEvents: 'none', zIndex: 2 }}>
+                          <i className="fas fa-play text-white fa-lg"></i>
+                        </div>
+                      )}
+
+                      <div className="position-absolute top-0 start-0 w-100 h-100 d-flex flex-column justify-content-end p-4" style={{ background: 'linear-gradient(to top, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0.25) 60%, rgba(0,0,0,0) 100%)', zIndex: 1 }}>
                         <div className="mb-2">
                           <span className="badge bg-success text-uppercase py-1 px-2">{item.type}</span>
                         </div>

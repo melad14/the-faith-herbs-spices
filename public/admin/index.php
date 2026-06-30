@@ -792,6 +792,29 @@ $media_items = isset($settings['media_items']) ? $settings['media_items'] : [];
             document.getElementById('view_media_edit_btn').onclick = function() { editMedia(item); };
             viewMediaModal.show();
         }
+
+        window.addEventListener('DOMContentLoaded', function() {
+            var urlParams = new URLSearchParams(window.location.search);
+            var action = urlParams.get('action');
+            var targetTab = '';
+            
+            if (action === 'save_media' || action === 'delete_media') {
+                targetTab = '#media-pane';
+            } else if (action === 'save_settings') {
+                targetTab = '#settings-pane';
+            } else if (action === 'delete_message') {
+                targetTab = '#messages-pane';
+            }
+            
+            if (targetTab) {
+                var tabTriggerEl = document.querySelector('a[href="' + targetTab + '"]');
+                if (tabTriggerEl) {
+                    // Activate Bootstrap tab
+                    var tab = bootstrap.Tab.getInstance(tabTriggerEl) || new bootstrap.Tab(tabTriggerEl);
+                    tab.show();
+                }
+            }
+        });
     </script>
 </body>
 </html>
