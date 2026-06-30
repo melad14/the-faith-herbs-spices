@@ -19,6 +19,8 @@ jobs:
         node-version: 18
 
     - name: 🔨 Install Dependencies & Build
+      env:
+        CI: false
       run: |
         npm install
         npm run build
