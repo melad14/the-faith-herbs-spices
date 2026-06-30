@@ -1,0 +1,62 @@
+{
+  "contact": {
+    "address": "Bani-suef, Egypt",
+    "email": "contact@ElEman.com",
+    "phone": "+201115027599",
+    "website": "www.ElEman.com"
+  },
+  "about": {
+    "vision": "To become a leading global supplier of premium quality herbs and spices, fostering teamwork and collaboration.",
+    "mission": "Provide 100% genuine assistance with faster execution and expert advice for global customers."
+  },
+  "counters": {
+    "countries": "25",
+    "team": "50",
+    "certificates": "15",
+    "products": "31"
+  },
+  "media_items": [
+    {
+      "id": "media_1",
+      "type": "image",
+      "title": "ISO 9001 Certificate",
+      "url": "Certificates-9001.png",
+      "description": "ElEman Herbs & Spices is ISO 9001 certified for quality management systems."
+    },
+    {
+      "id": "media_2",
+      "type": "image",
+      "title": "FDA Registration",
+      "url": "Certificates-FDA.png",
+      "description": "Our facilities and products are fully registered and compliant with the US FDA standards."
+    },
+    {
+      "id": "media_3",
+      "type": "image",
+      "title": "KOSHER Certification",
+      "url": "Certificates-KOSHER.png",
+      "description": "Kosher certified products to meet diverse dietary requirements worldwide."
+    },
+    {
+      "id": "media_4",
+      "type": "image",
+      "title": "FSSC 22000 Certification",
+      "url": "Certificates-FSSC22000.png",
+      "description": "FSSC 22000 certification ensuring the highest level of food safety management."
+    },
+    {
+      "id": "media_5",
+      "type": "image",
+      "title": "Processing Facility",
+      "url": "office-1.jpg",
+      "description": "State of the art processing and dehydration facility in Bani-suef, Egypt."
+    },
+    {
+      "id": "media_6",
+      "type": "image",
+      "title": "Quality Lab",
+      "url": "office-3.jpg",
+      "description": "Our in-house quality control laboratory verifying purity and compliance of every batch."
+    }
+  ]
+}
