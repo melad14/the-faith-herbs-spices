@@ -36,3 +36,5 @@ jobs:
         exclude: |
           **/.git*
           **/node_modules/**
+          admin/data/**
+          admin/uploads/**
