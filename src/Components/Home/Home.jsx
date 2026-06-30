@@ -21,14 +21,7 @@ import { products as localProducts } from '../../data/products';
 export default function Home() {
   const [productsList, setProductsList] = useState(localProducts);
   const [playingVideoId, setPlayingVideoId] = useState(null);
-  const [mediaList, setMediaList] = useState([
-    { id: "media_1", type: "image", title: "ISO 9001 Certificate", url: "Certificates-9001.png", description: "ElEman Herbs & Spices is ISO 9001 certified for quality management systems." },
-    { id: "media_2", type: "image", title: "FDA Registration", url: "Certificates-FDA.png", description: "Our facilities and products are fully registered and compliant with the US FDA standards." },
-    { id: "media_3", type: "image", title: "KOSHER Certification", url: "Certificates-KOSHER.png", description: "Kosher certified products to meet diverse dietary requirements worldwide." },
-    { id: "media_4", type: "image", title: "FSSC 22000 Certification", url: "Certificates-FSSC22000.png", description: "FSSC 22000 certification ensuring the highest level of food safety management." },
-    { id: "media_5", type: "image", title: "Processing Facility", url: "office-1.jpg", description: "State of the art processing and dehydration facility in Bani-suef, Egypt." },
-    { id: "media_6", type: "image", title: "Quality Lab", url: "office-3.jpg", description: "Our in-house quality control laboratory verifying purity and compliance of every batch." }
-  ]);
+  const [mediaList, setMediaList] = useState([]);
 
   useEffect(() => {
     Aos.init({
@@ -101,7 +94,8 @@ export default function Home() {
         <FeaturesSection />
 
         {/* Media Gallery Start */}
-        <div className="container-fluid py-5 bg-light">
+        {mediaList && mediaList.length > 0 && (
+          <div className="container-fluid py-5 bg-light">
           <div className="container py-5">
             <div className="section-title text-center mb-5" data-aos="fade-up">
               <div className="sub-style">
@@ -184,7 +178,8 @@ export default function Home() {
               })}
             </div>
           </div>
-        </div>
+          </div>
+        )}
         {/* Media Gallery End */}
 
         {/* About Section */}
