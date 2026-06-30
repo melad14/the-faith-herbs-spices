@@ -187,55 +187,89 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_GET['action'])) {
         $media_content = isset($_POST['media_content']) ? trim($_POST['media_content']) : '';
         $media_file = isset($_POST['existing_media_file']) ? $_POST['existing_media_file'] : '';
 
+        $upload_error = '';
+
         // Image upload
-        if ($media_type === 'image' && isset($_FILES['media_image']) && $_FILES['media_image']['error'] === UPLOAD_ERR_OK) {
-            $tmpPath = $_FILES['media_image']['tmp_name'];
-            $fileName = $_FILES['media_image']['name'];
-            $ext = strtolower(pathinfo($fileName, PATHINFO_EXTENSION));
-            $allowed = ['jpg', 'jpeg', 'png', 'webp', 'gif'];
-            if (in_array($ext, $allowed)) {
-                $newName = 'media_' . uniqid() . '.' . $ext;
-                if (move_uploaded_file($tmpPath, UPLOAD_DIR . $newName)) {
-                    $media_file = $newName;
+        if ($media_type === 'image') {
+            if (isset($_FILES['media_image']) && $_FILES['media_image']['error'] === UPLOAD_ERR_OK) {
+                $tmpPath = $_FILES['media_image']['tmp_name'];
+                $fileName = $_FILES['media_image']['name'];
+                $ext = strtolower(pathinfo($fileName, PATHINFO_EXTENSION));
+                $allowed = ['jpg', 'jpeg', 'png', 'webp', 'gif'];
+                if (in_array($ext, $allowed)) {
+                    $newName = 'media_' . uniqid() . '.' . $ext;
+                    if (move_uploaded_file($tmpPath, UPLOAD_DIR . $newName)) {
+                        $media_file = $newName;
+                    } else {
+                        $upload_error = 'فشل نقل ملف الصورة المرفوع إلى مجلد المرفوعات!';
+                    }
+                } else {
+                    $upload_error = 'امتداد الصورة غير مسموح به! الامتدادات المسموحة: jpg, jpeg, png, webp, gif';
+                }
+            } else if (isset($_FILES['media_image']) && $_FILES['media_image']['error'] !== UPLOAD_ERR_NO_FILE) {
+                $err_code = $_FILES['media_image']['error'];
+                if ($err_code === UPLOAD_ERR_INI_SIZE || $err_code === UPLOAD_ERR_FORM_SIZE) {
+                    $upload_error = 'فشل رفع الصورة: حجم الملف كبير جداً! يرجى زيادة حد الرفع الأقصى للملفات (upload_max_filesize) في إعدادات السيرفر (PHP).';
+                } else {
+                    $upload_error = 'فشل رفع الصورة! رمز الخطأ: ' . $err_code;
                 }
             }
         }
 
         // Video upload
-        if ($media_type === 'video' && isset($_FILES['media_video']) && $_FILES['media_video']['error'] === UPLOAD_ERR_OK) {
-            $tmpPath = $_FILES['media_video']['tmp_name'];
-            $fileName = $_FILES['media_video']['name'];
-            $ext = strtolower(pathinfo($fileName, PATHINFO_EXTENSION));
-            $allowedVideo = ['mp4', 'webm', 'ogg', 'mov'];
-            if (in_array($ext, $allowedVideo)) {
-                $newName = 'media_video_' . uniqid() . '.' . $ext;
-                if (move_uploaded_file($tmpPath, UPLOAD_DIR . $newName)) {
-                    $media_file = $newName;
+        if ($media_type === 'video') {
+            if (isset($_FILES['media_video']) && $_FILES['media_video']['error'] === UPLOAD_ERR_OK) {
+                $tmpPath = $_FILES['media_video']['tmp_name'];
+                $fileName = $_FILES['media_video']['name'];
+                $ext = strtolower(pathinfo($fileName, PATHINFO_EXTENSION));
+                $allowedVideo = ['mp4', 'webm', 'ogg', 'mov'];
+                if (in_array($ext, $allowedVideo)) {
+                    $newName = 'media_video_' . uniqid() . '.' . $ext;
+                    if (move_uploaded_file($tmpPath, UPLOAD_DIR . $newName)) {
+                        $media_file = $newName;
+                    } else {
+                        $upload_error = 'فشل نقل ملف الفيديو المرفوع إلى مجلد المرفوعات!';
+                    }
+                } else {
+                    $upload_error = 'امتداد الفيديو غير مسموح به! الامتدادات المسموحة: mp4, webm, ogg, mov';
+                }
+            } else if (isset($_FILES['media_video']) && $_FILES['media_video']['error'] !== UPLOAD_ERR_NO_FILE) {
+                $err_code = $_FILES['media_video']['error'];
+                if ($err_code === UPLOAD_ERR_INI_SIZE || $err_code === UPLOAD_ERR_FORM_SIZE) {
+                    $upload_error = 'فشل رفع الفيديو: حجم الملف كبير جداً! يرجى زيادة حد الرفع الأقصى للملفات (upload_max_filesize) في إعدادات السيرفر (PHP).';
+                } else {
+                    $upload_error = 'فشل رفع الفيديو! رمز الخطأ: ' . $err_code;
                 }
             }
         }
 
-        $item = [
-            'id' => $media_id,
-            'type' => $media_type,
-            'title' => $media_title,
-            'description' => $media_description,
-            'content' => $media_content,
-            'file' => $media_file,
-        ];
+        if ($upload_error) {
+            $message_status = $upload_error;
+            $status_type = 'danger';
+        } else {
+            $item = [
+                'id' => $media_id,
+                'type' => $media_type,
+                'title' => $media_title,
+                'description' => $media_description,
+                'content' => $media_content,
+                'file' => $media_file,
+            ];
 
-        $found = false;
-        foreach ($settings['media_items'] as $k => $m) {
-            if ($m['id'] === $media_id) {
-                $settings['media_items'][$k] = $item;
-                $found = true;
-                break;
+            $found = false;
+            foreach ($settings['media_items'] as $k => $m) {
+                if ($m['id'] === $media_id) {
+                    $settings['media_items'][$k] = $item;
+                    $found = true;
+                    break;
+                }
             }
-        }
-        if (!$found) $settings['media_items'][] = $item;
+            if (!$found) $settings['media_items'][] = $item;
 
-        save_settings_data($settings);
-        $message_status = 'تم حفظ عنصر الميديا بنجاح!';
+            save_settings_data($settings);
+            $message_status = 'تم حفظ عنصر الميديا بنجاح!';
+            $status_type = 'success';
+        }
     }
 
     // Delete media item
