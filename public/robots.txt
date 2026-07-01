@@ -1,3 +1,8 @@
 # https://www.robotstxt.org/robotstxt.html
 User-agent: *
-Disallow:
+Allow: /
+
+# Exclude admin files from indexing
+Disallow: /admin/
+
+Sitemap: https://elemanherbs.com/sitemap.xml

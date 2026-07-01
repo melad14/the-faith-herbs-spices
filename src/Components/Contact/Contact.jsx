@@ -3,8 +3,15 @@ import Aos from 'aos';
 import 'aos/dist/aos.css';
 import { Link } from 'react-router-dom';
 import ContactSection from '../ContactSection/ContactSection';
+import useSEO from '../../hooks/useSEO';
 
 export default function Contact() {
+  useSEO({
+    title: 'Contact Us | ElEman Herbs & Spices | تواصل معنا - شركة الايمان',
+    description: 'تواصل مع شركة الايمان للاستيراد والتصدير والنباتات الطبية. ارسل استفسارك أو طلب الأسعار وسيقوم فريق المبيعات بالرد عليك فوراً.',
+    keywords: 'تواصل مع الايمان, ايميل الايمان هيربس, عنوان شركة الايمان, تواصل استيراد اعشاب'
+  });
+
   useEffect(() => {
     Aos.init({
       duration: 1000

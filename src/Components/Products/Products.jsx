@@ -5,8 +5,15 @@ import { Link } from 'react-router-dom';
 import axios from 'axios';
 import { API_URL, UPLOADS_URL } from '../../apiConfig';
 import { products as localProducts } from '../../data/products';
+import useSEO from '../../hooks/useSEO';
 
 export default function Products() {
+  useSEO({
+    title: 'Our Products | ElEman Herbs & Spices | منتجاتنا من الأعشاب والتوابل الطبيعية',
+    description: 'استكشف قائمة منتجات شركة الايمان للاستيراد والتصدير - بذور، توابل، أعشاب طبية وعطرية مجففة وعضوية فاخرة. Dehydrated, Seeds, Herbs, Flowers.',
+    keywords: 'منتجات الايمان هيربس, اعشاب الايمان, توابل الايمان, نباتات طبية مصرية, dehydrated garlic, dehydrated onion, chamomile, marjoram, basil egypt'
+  });
+
   const [productsList, setProductsList] = useState(localProducts);
   const [searchTerm, setSearchTerm] = useState('');
   const [selectedCategory, setSelectedCategory] = useState('All');

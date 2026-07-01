@@ -4,11 +4,18 @@ import axios from 'axios';
 import Aos from 'aos';
 import 'aos/dist/aos.css';
 import { API_URL, UPLOADS_URL } from '../../apiConfig';
+import useSEO from '../../hooks/useSEO';
 
 export default function MediaDetails() {
   const { id } = useParams();
   const [mediaItem, setMediaItem] = useState(null);
   const [loading, setLoading] = useState(true);
+
+  useSEO({
+    title: mediaItem ? `${mediaItem.title} | ElEman Showcase` : 'Showcase Item | ElEman Herbs & Spices',
+    description: mediaItem ? `${mediaItem.title} - ${mediaItem.description || ''}. Quality control, organic certifications, and modern facilities of ElEman Herbs & Spices.` : 'Showcase Details from ElEman Herbs & Spices.',
+    keywords: mediaItem ? `${mediaItem.title}, eleman certificate, quality herbs` : 'quality control egypt'
+  });
 
   useEffect(() => {
     Aos.init({ duration: 1000, once: true });

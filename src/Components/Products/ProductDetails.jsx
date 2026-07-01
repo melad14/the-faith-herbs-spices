@@ -5,11 +5,18 @@ import Aos from 'aos';
 import 'aos/dist/aos.css';
 import { API_URL, UPLOADS_URL } from '../../apiConfig';
 import { products as localProducts } from '../../data/products';
+import useSEO from '../../hooks/useSEO';
 
 export default function ProductDetails() {
   const { id } = useParams();
   const [product, setProduct] = useState(null);
   const [loading, setLoading] = useState(true);
+
+  useSEO({
+    title: product ? `${product.title} (${product.scientificName}) | ElEman Herbs & Spices` : 'Product Details | ElEman Herbs & Spices',
+    description: product ? `${product.title} - Category: ${product.category}, Available Forms: ${product.availableForms ? product.availableForms.join(', ') : ''}, Pesticides Status: ${product.pesticidesStatus ? product.pesticidesStatus.join(', ') : ''}. Premium organic export from Egypt.` : 'Product Details from ElEman Herbs & Spices.',
+    keywords: product ? `${product.title}, ${product.scientificName}, ${product.category}, eleman product` : 'herbs egypt'
+  });
 
   useEffect(() => {
     Aos.init({ duration: 1000, once: true });

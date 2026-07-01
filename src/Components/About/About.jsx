@@ -5,8 +5,15 @@ import { Link } from 'react-router-dom';
 import FeaturesSection from '../FeaturesSection/FeaturesSection';
 import AboutSection from '../AboutSection/AboutSection';
 import CounterSection from '../CounterSection/CounterSection';
+import useSEO from '../../hooks/useSEO';
 
 export default function About() {
+  useSEO({
+    title: 'About Us | ElEman Herbs & Spices | من نحن - شركة الايمان لتصدير الأعشاب',
+    description: 'تعرف على شركة الايمان لتصدير النباتات الطبية والعطرية والتوابل - رؤيتنا ورسالتنا وجودة مصنعنا ومنتجاتنا الموثوقة عالمياً.',
+    keywords: 'تاريخ الايمان هيربس, مصنع الايمان, من نحن الايمان, تصدير اعشاب مصر'
+  });
+
   useEffect(() => {
     Aos.init({
       duration: 1000

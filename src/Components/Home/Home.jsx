@@ -4,6 +4,7 @@ import 'aos/dist/aos.css';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
 import { API_URL, UPLOADS_URL } from '../../apiConfig';
+import useSEO from '../../hooks/useSEO';
 
 // Importing images from the img directory
 import carousel1 from '../../img/Website-Header-latest.png';
@@ -19,6 +20,12 @@ import ContactSection from '../ContactSection/ContactSection';
 import { products as localProducts } from '../../data/products';
 
 export default function Home() {
+  useSEO({
+    title: 'ElEman Herbs & Spices | شركة الايمان للاستيراد والتصدير والنباتات الطبية',
+    description: 'شركة الايمان للاستيراد والتصدير والنباتات الطبية والعطرية (ElEman Herbs & Spices) - من كبار مصدري الأعشاب والتوابل والبذور الفاخرة والعضوية من مصر لكافة أنحاء العالم. elemainherbs.',
+    keywords: 'الايمان هيربس, نباتات الايمان, الايمان للاستيراد والتصدير, الايمان للنباتات الطبيه, elemainherbs, eleman, eleman herbs'
+  });
+
   const [productsList, setProductsList] = useState(localProducts);
   const [playingVideoId, setPlayingVideoId] = useState(null);
   const [mediaList, setMediaList] = useState([]);
