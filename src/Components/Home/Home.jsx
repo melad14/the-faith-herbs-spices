@@ -21,9 +21,9 @@ import { products as localProducts } from '../../data/products';
 
 export default function Home() {
   useSEO({
-    title: 'ElEman Herbs & Spices | شركة الايمان للاستيراد والتصدير والنباتات الطبية',
+    title: 'ElEman Herbs & Spices | الايمان هربس | الايمان للنباتات الطبية والعطرية',
     description: 'شركة الايمان للاستيراد والتصدير والنباتات الطبية والعطرية (ElEman Herbs & Spices) - من كبار مصدري الأعشاب والتوابل والبذور الفاخرة والعضوية من مصر لكافة أنحاء العالم. elemainherbs.',
-    keywords: 'الايمان هيربس, نباتات الايمان, الايمان للاستيراد والتصدير, الايمان للنباتات الطبيه, elemainherbs, eleman, eleman herbs'
+    keywords: 'الايمان هربس, الايمان هيربس, نباتات الايمان, الايمان للاستيراد والتصدير, الايمان للنباتات الطبيه, الايمان للنباتات الطبية, elemainherbs, eleman, eleman herbs'
   });
 
   const [productsList, setProductsList] = useState(localProducts);
